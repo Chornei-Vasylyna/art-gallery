@@ -1,7 +1,12 @@
-import { Module } from '@nestjs/common';
-import { ArtworksService } from './artworks.service.js';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { Artwork } from "../db/entities/artwork.entity.js";
+import { ArtworksController } from "./artworks.controller.js";
+import { ArtworksService } from "./artworks.service.js";
 
 @Module({
-  providers: [ArtworksService]
+	imports: [TypeOrmModule.forFeature([Artwork])],
+	controllers: [ArtworksController],
+	providers: [ArtworksService],
 })
 export class ArtworksModule {}
