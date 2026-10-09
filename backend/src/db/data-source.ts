@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { DataSource, type DataSourceOptions } from "typeorm";
-import { Artwork } from "./entities/index.js";
+import { Artwork, User } from "./entities/index.js";
 
 export const dataSourceOptions: DataSourceOptions = {
 	type: "postgres",
@@ -9,7 +9,7 @@ export const dataSourceOptions: DataSourceOptions = {
 	username: process.env.DB_USERNAME || "postgres",
 	password: process.env.DB_PASSWORD || "postgres",
 	database: process.env.DB_DATABASE || "art_gallery",
-	entities: [Artwork],
+	entities: [Artwork, User],
 	migrations: [`${import.meta.dirname}/migrations/*{.ts,.js}`],
 };
 

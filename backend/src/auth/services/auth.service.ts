@@ -7,10 +7,10 @@ import { InjectRepository } from "@nestjs/typeorm";
 import { compare, hash } from "bcryptjs";
 import type { Repository } from "typeorm";
 import { User } from "../../db/entities/user.entity.js";
-import type { LoginDto } from "../dto/login.dto.js";
-import type { RegisterDto } from "../dto/register.dto.js";
+import { LoginDto } from "../dto/login.dto.js";
+import { RegisterDto } from "../dto/register.dto.js";
 import { Role } from "../enums/role.enum.js";
-import type { TokenService } from "../services/token.service.js";
+import { TokenService } from "../services/token.service.js";
 
 @Injectable()
 export class AuthService {

@@ -12,9 +12,9 @@ import {
 	REFRESH_TOKEN_COOKIE,
 	REFRESH_TOKEN_COOKIE_PATH,
 } from "../constants/auth.constants.js";
-import type { LoginDto } from "../dto/login.dto.js";
-import type { RegisterDto } from "../dto/register.dto.js";
-import type { AuthService } from "../services/auth.service.js";
+import { LoginDto } from "../dto/login.dto.js";
+import { RegisterDto } from "../dto/register.dto.js";
+import { AuthService } from "../services/auth.service.js";
 import type { AuthenticatedUser } from "../types/auth.types.js";
 
 @Controller("auth")

@@ -22,7 +22,8 @@
     "db:generate": "pnpm run typeorm migration:generate",
     "db:migrate": "pnpm run typeorm migration:run",
     "db:revert": "pnpm run typeorm migration:revert",
-    "db:status": "pnpm run typeorm migration:show"
+    "db:status": "pnpm run typeorm migration:show",
+    "db:seed": "pnpm run build && node dist/db/seed.js"
   },
   "dependencies": {
     "@nestjs/common": "^12.0.1",
