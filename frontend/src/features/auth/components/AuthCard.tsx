@@ -18,16 +18,14 @@ export const AuthCard = ({
 	children,
 }: PropsWithChildren<AuthCardProps>) => {
 	return (
-		<Card className="w-full max-w-md rounded-2xl border-border/60 shadow-xl">
-			<CardHeader className="space-y-2 px-8 pt-6 pb-3 text-center">
+		<Card className="w-full max-w-md gap-0 rounded-2xl py-0 border-border/60 shadow-xl">
+			<CardHeader className="gap-1.5 space-y-0 px-8 pt-8 pb-6 text-center">
 				<CardTitle className="text-2xl font-semibold tracking-tight">
 					{title}
 				</CardTitle>
-				<CardDescription className="text-balance">
-					{description}
-				</CardDescription>
+				<CardDescription>{description}</CardDescription>
 			</CardHeader>
-			<CardContent className="px-8 pb-8">{children}</CardContent>
+			<CardContent className="px-8 pb-8 pt-0">{children}</CardContent>
 		</Card>
 	);
 };

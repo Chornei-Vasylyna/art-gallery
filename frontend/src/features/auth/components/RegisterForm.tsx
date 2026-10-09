@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { Button } from "@/shared/components/ui/button";
 import { Input } from "@/shared/components/ui/input";
 import { cn } from "@/shared/lib/utils";
-import { useLoginForm } from "../hooks/useLoginForm";
+import { useRegisterForm } from "../hooks/useRegisterForm";
 
-export const LoginForm = () => {
-	const { form, onSubmit, isPending } = useLoginForm();
+export const RegisterForm = () => {
+	const { form, onSubmit, isPending } = useRegisterForm();
 	const {
 		register,
 		formState: { errors },
@@ -22,7 +22,11 @@ export const LoginForm = () => {
 					type="email"
 					autoComplete="email"
 					placeholder="name@example.com"
-					className={cn("h-11", errors.email && "border-destructive/30 shadow-[0_0_14px_2px] shadow-destructive/15 focus-visible:ring-destructive/10")}
+					className={cn(
+						"h-11",
+						errors.email &&
+							"border-destructive/30 shadow-[0_0_14px_2px] shadow-destructive/15 focus-visible:ring-destructive/10",
+					)}
 					{...register("email")}
 				/>
 				{errors.email && (
@@ -39,9 +43,13 @@ export const LoginForm = () => {
 				<Input
 					id="password"
 					type="password"
-					autoComplete="current-password"
+					autoComplete="new-password"
 					placeholder="••••••••"
-					className={cn("h-11", errors.password && "border-destructive/30 shadow-[0_0_14px_2px] shadow-destructive/15 focus-visible:ring-destructive/10")}
+					className={cn(
+						"h-11",
+						errors.password &&
+							"border-destructive/30 shadow-[0_0_14px_2px] shadow-destructive/15 focus-visible:ring-destructive/10",
+					)}
 					{...register("password")}
 				/>
 				{errors.password && (
@@ -52,16 +60,16 @@ export const LoginForm = () => {
 			</div>
 
 			<Button type="submit" className="h-11 w-full" disabled={isPending}>
-				{isPending ? "Signing in..." : "Sign In"}
+				{isPending ? "Creating account..." : "Create account"}
 			</Button>
 
 			<p className="pt-1 text-center text-sm text-muted-foreground">
-				Don't have an account?{" "}
+				Already have an account?{" "}
 				<Link
-					to="/register"
+					to="/login"
 					className="font-semibold text-primary underline-offset-4 hover:underline"
 				>
-					Sign up
+					Sign in
 				</Link>
 			</p>
 		</form>
