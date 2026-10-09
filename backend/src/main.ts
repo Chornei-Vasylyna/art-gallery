@@ -1,6 +1,7 @@
 import { ValidationPipe } from "@nestjs/common";
 import { ConfigService } from "@nestjs/config";
 import { NestFactory } from "@nestjs/core";
+import cookieParser from "cookie-parser";
 import { AppModule } from "./app.module.js";
 
 async function bootstrap() {
@@ -8,10 +9,17 @@ async function bootstrap() {
 
 	const configService = app.get(ConfigService);
 
+	app.use(cookieParser());
+	
+	app.enableCors({
+		origin: configService.get<string>("FRONTEND_URL") ?? "http://localhost:5173",
+		credentials: true,
+	});
+
 	app.useGlobalPipes(
 		new ValidationPipe({
 			whitelist: true,
-      		forbidNonWhitelisted: true,
+			forbidNonWhitelisted: true,
 			transform: true,
 		}),
 	);

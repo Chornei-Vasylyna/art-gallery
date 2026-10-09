@@ -86,7 +86,6 @@ export class AuthController {
 		tokens: {
 			accessToken: string;
 			refreshToken: string;
-			expiresIn: string;
 			user: AuthenticatedUser;
 		},
 	) {

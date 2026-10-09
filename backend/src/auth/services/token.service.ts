@@ -28,8 +28,6 @@ export class TokenService {
 			type: "access",
 		};
 
-		const accessExpiresIn =
-			this.configService.get<string>("JWT_ACCESS_EXPIRES_IN") || "15m";
 		const refreshExpiresIn =
 			this.configService.get<string>("JWT_REFRESH_EXPIRES_IN") || "7d";
 
@@ -50,7 +48,6 @@ export class TokenService {
 		return {
 			accessToken,
 			refreshToken,
-			expiresIn: accessExpiresIn,
 			user,
 		};
 	}
