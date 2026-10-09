@@ -6,15 +6,21 @@ import { NotFoundPage } from "@/pages/NotFoundPage";
 import { RegisterPage } from "@/pages/RegisterPage";
 import { RootLayout } from "@/shared/layouts/RootLayout";
 import { ProtectedRoute } from "./ProtectedRoute";
+import { PublicOnlyRoute } from "./PublicOnlyRoute";
 
 export const router = createBrowserRouter([
 	{
-		path: "/login",
-		element: <LoginPage />,
-	},
-	{
-		path: "/register",
-		element: <RegisterPage />,
+		element: <PublicOnlyRoute />,
+		children: [
+			{
+				path: "/login",
+				element: <LoginPage />,
+			},
+			{
+				path: "/register",
+				element: <RegisterPage />,
+			},
+		],
 	},
 
 	{
