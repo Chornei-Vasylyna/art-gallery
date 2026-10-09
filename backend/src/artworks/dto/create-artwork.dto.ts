@@ -8,7 +8,7 @@ import {
 	IsString,
 	MaxLength,
 } from "class-validator";
-import { ArtworkType } from "./artwork-type.enum.js";
+import { ArtworkType } from "../enums/artwork-type.enum.js";
 
 export class CreateArtworkDto {
 	@IsString()

@@ -2,12 +2,12 @@ import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import type { FindOptionsOrder, Repository } from "typeorm";
 import { Artwork } from "../db/entities/artwork.entity.js";
-import type { CreateArtworkDto } from "./dtos/create-artwork.dto.js";
+import type { CreateArtworkDto } from "./dto/create-artwork.dto.js";
 import {
 	type GetArtworksQueryDto,
 	PriceSort,
-} from "./dtos/get-artworks-query.dto.js";
-import type { UpdateArtworkDto } from "./dtos/update-artwork.dto.js";
+} from "./dto/get-artworks-query.dto.js";
+import type { UpdateArtworkDto } from "./dto/update-artwork.dto.js";
 
 @Injectable()
 export class ArtworksService {
@@ -44,7 +44,7 @@ export class ArtworksService {
 
 	create(createArtworkDto: CreateArtworkDto): Promise<Artwork> {
 		const artwork = this.artworksRepository.create(createArtworkDto);
-		
+
 		return this.artworksRepository.save(artwork);
 	}
 
@@ -66,7 +66,7 @@ export class ArtworksService {
 
 	async remove(id: string): Promise<void> {
 		const result = await this.artworksRepository.delete(id);
-		
+
 		if (result.affected === 0) {
 			throw new NotFoundException(`Artwork with id "${id}" not found`);
 		}
