@@ -1,6 +1,6 @@
 import { create } from "zustand"
 import { authService } from "@/features/auth/api/auth.service"
-import type { AuthUser } from "@/features/auth/api/auth.types"
+import type { AuthUser } from "@/shared/types"
 
 type AuthState = {
   user: AuthUser | null

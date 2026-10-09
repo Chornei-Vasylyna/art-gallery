@@ -1,11 +1,11 @@
 import type { AxiosRequestConfig } from "axios";
-import { apiEndpoints, baseApi } from "@/shared/api";
+import { apiClient, apiEndpoints } from "@/shared/api";
 import type { AuthRefreshResponse, AuthResponse } from "@/shared/types";
 import type { LoginCredentials, RegisterCredentials } from "./auth.types";
 
 export const authService = {
 	login: async (credentials: LoginCredentials): Promise<AuthResponse> => {
-		const { data } = await baseApi.post<AuthResponse>(
+		const { data } = await apiClient.post<AuthResponse>(
 			apiEndpoints.auth.login,
 			credentials,
 		);
@@ -14,7 +14,7 @@ export const authService = {
 	},
 
 	register: async (credentials: RegisterCredentials): Promise<AuthResponse> => {
-		const { data } = await baseApi.post<AuthResponse>(
+		const { data } = await apiClient.post<AuthResponse>(
 			apiEndpoints.auth.register,
 			credentials,
 		);
@@ -27,7 +27,7 @@ export const authService = {
 			_retry: true,
 		};
 
-		const { data } = await baseApi.post<AuthRefreshResponse>(
+		const { data } = await apiClient.post<AuthRefreshResponse>(
 			apiEndpoints.auth.refresh,
 			undefined,
 			refreshConfig,
@@ -37,6 +37,6 @@ export const authService = {
 	},
 
 	logout: async (): Promise<void> => {
-		await baseApi.post(apiEndpoints.auth.logout);
+		await apiClient.post(apiEndpoints.auth.logout);
 	},
 };

@@ -3,9 +3,9 @@ import { createRoot } from "react-dom/client";
 import "@/app/index.css";
 import { App } from "@/app/App.tsx";
 import { useAuthStore } from "./features/auth/model/useAuthStore";
-import { baseApi, setupInterceptors } from "./shared/api";
+import { apiClient, setupInterceptors } from "./shared/api";
 
-setupInterceptors(baseApi, {
+setupInterceptors(apiClient, {
 	getAccessToken: () => useAuthStore.getState().accessToken,
 	setAccessToken: (accessToken) =>
 		useAuthStore.getState().setAccessToken(accessToken),

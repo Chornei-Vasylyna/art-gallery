@@ -7,7 +7,7 @@ export type AuthInterceptorCallbacks = {
 export type AuthUser = {
   id: string;
   email: string;
-  role: "USER" | "ADMIN";
+  roles: "user" | "admin";
 };
 
 export type AuthResponse = {

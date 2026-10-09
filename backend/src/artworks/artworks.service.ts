@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import type { FindOptionsOrder, Repository } from "typeorm";
+import { type FindOptionsOrder, ILike, type Repository } from "typeorm";
 import { Artwork } from "../db/entities/artwork.entity.js";
 import type { CreateArtworkDto } from "./dto/create-artwork.dto.js";
 import {
@@ -25,7 +25,7 @@ export class ArtworksService {
 
 		return this.artworksRepository.find({
 			where: {
-				...(artist ? { artist } : {}),
+				...(artist ? { artist: ILike(`%${artist}%`) } : {}),
 				...(type ? { type } : {}),
 			},
 			order,
