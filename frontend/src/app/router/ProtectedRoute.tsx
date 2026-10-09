@@ -1,7 +1,8 @@
 import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { useAuthStore } from "@/features/auth/model/useAuthStore.js";
 
 export const ProtectedRoute = () => {
-	const user = { id: "testId", email: "test@gmail.com", roles: ["ADMIN"] };
+	const user = useAuthStore((state) => state.user);
 
 	const location = useLocation();
 
