@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { AspectRatio } from "@/shared/components/ui/aspect-ratio";
 import { Badge } from "@/shared/components/ui/badge";
 import { Button } from "@/shared/components/ui/button";
@@ -28,7 +29,7 @@ export const ArtworkCard = ({
 	return (
 		<Card
 			className={cn(
-				"gap-0 rounded-xl bg-card py-0 shadow-sm ring-1 transition-shadow hover:shadow-md",
+				"relative gap-0 overflow-hidden rounded-xl bg-card py-0 shadow-sm ring-1 transition-shadow hover:shadow-md",
 			)}
 		>
 			<AspectRatio ratio={2 / 1} className="bg-muted"></AspectRatio>
@@ -36,7 +37,12 @@ export const ArtworkCard = ({
 			<CardHeader className="gap-1 px-4 pt-4 pb-0">
 				<div className="flex items-baseline justify-between gap-3">
 					<CardTitle className="text-base font-semibold leading-tight">
-						{title}
+						<Link
+							to={`/artworks/${id}`}
+							className="after:absolute after:inset-0 after:content-['']"
+						>
+							{title}
+						</Link>
 					</CardTitle>
 					<span className="shrink-0 text-base font-semibold">${price}</span>
 				</div>
@@ -49,7 +55,7 @@ export const ArtworkCard = ({
 					variant={availability ? "default" : "secondary"}
 					className="text-xs"
 				>
-					{availability ? "Available" : "Unavailable"}
+					{availability ? "Available" : "Exhibition Only"}
 				</Badge>
 			</CardContent>
 
@@ -58,7 +64,7 @@ export const ArtworkCard = ({
 					<Button
 						variant="outline"
 						size="sm"
-						className="w-full border-destructive/30 text-destructive hover:border-destructive/50 hover:bg-destructive/10 hover:text-destructive"
+						className="relative z-10 w-full border-destructive/30 text-destructive hover:border-destructive/50 hover:bg-destructive/10 hover:text-destructive"
 						disabled={isDeleting}
 						onClick={() => onDelete(id)}
 					>

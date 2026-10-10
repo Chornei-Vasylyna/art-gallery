@@ -9,3 +9,11 @@ export const useArtworksQuery = (params?: GetArtworksParams) => {
 		queryFn: () => artworksService.getArtworks(params),
 	});
 };
+
+export const useArtworkQuery = (id: string) => {
+	return useQuery({
+		queryKey: artworkKeys.detail(id),
+		queryFn: () => artworksService.getArtworkById(id),
+		enabled: !!id,
+	});
+};

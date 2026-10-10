@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useIsAdmin } from "@/features/auth/hooks/useIsAdmin";
 import { useAuthStore } from "@/features/auth/model/useAuthStore";
 import { useDeleteArtworkMutation } from "../api/artworks.mutations";
 import { useArtworksQuery } from "../api/artworks.queries";
@@ -9,7 +10,7 @@ const PAGE_SIZE = 4;
 export const useArtworks = () => {
 	const { user } = useAuthStore();
 	console.log(user);
-	const canDelete = user?.roles.includes("admin") ?? false;
+	const canDelete = useIsAdmin();
 
 	const [filters, setFilters] = useState<GetArtworksParams>({});
 	const [page, setPage] = useState(1);
