@@ -4,6 +4,7 @@ import { Spinner } from "@/shared/components/ui/spinner";
 import { useUpdateArtworkMutation } from "../features/artworks/api/artworks.mutations";
 import { useArtworkQuery } from "../features/artworks/api/artworks.queries";
 import { ArtworkEditForm } from "../features/artworks/components/artwork-edit-form/ArtworkEditForm";
+import { NotFoundPage } from "./NotFoundPage";
 
 export const ArtworkDetailsPage = () => {
 	const { id = "" } = useParams<{ id: string }>();
@@ -20,7 +21,7 @@ export const ArtworkDetailsPage = () => {
 	}
 
 	if (isError || !artwork) {
-		return <p className="p-6 text-sm">Artwork not found</p>;
+		return <NotFoundPage />;
 	}
 
 	return (
