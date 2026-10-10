@@ -12,11 +12,13 @@ export const ArtworkDetailsPage = () => {
 		useUpdateArtworkMutation(id);
 
 	if (isPending) {
-		<div className="flex min-h-[50vh] items-center justify-center">
-			<Spinner className="size-6" />
-		</div>;
+		return (
+			<div className="flex min-h-[50vh] items-center justify-center">
+				<Spinner className="size-6" />
+			</div>
+		);
 	}
-	
+
 	if (isError || !artwork) {
 		return <p className="p-6 text-sm">Artwork not found</p>;
 	}
