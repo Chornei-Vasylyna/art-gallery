@@ -6,7 +6,7 @@ export const artworkFormSchema = z.object({
 		.string()
 		.trim()
 		.min(1, "Title is required")
-		.max(100, "Title is too long (max 100)"),
+		.max(99, "Title is too long (max 99)"),
 	artist: z
 		.string()
 		.trim()
@@ -15,7 +15,7 @@ export const artworkFormSchema = z.object({
 	type: z.enum(ArtworkType),
 	price: z
 		.number({ error: "Price is required" })
-		.min(0.01, "Price must be more than 0"),
+		.positive("Price must be greater than 0"),
 	availability: z.boolean(),
 });
 
