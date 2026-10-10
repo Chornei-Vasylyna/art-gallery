@@ -1,6 +1,7 @@
 import { ArtworkCard } from "@/features/artworks/components/ArtworkCard";
 import { ArtworkPagination } from "@/features/artworks/components/ArtworkPagination";
 import { ArtworkFilters } from "@/features/artworks/components/artwork-filters/ArtworkFilters";
+import { CreateArtworkDialog } from "@/features/artworks/components/create-artwork/CreateArtworkDialog";
 import { useArtworks } from "@/features/artworks/hooks/useArtworks";
 import { Spinner } from "@/shared/components/ui/spinner";
 
@@ -9,7 +10,7 @@ export const ArtworksPage = () => {
 		artworks,
 		isLoading,
 		isDeleting,
-		canDelete,
+		isAdmin,
 		page,
 		totalPages,
 		handlePageChange,
@@ -25,11 +26,14 @@ export const ArtworksPage = () => {
 				Explore Our Collection
 			</h1>
 
-			<ArtworkFilters
-				onArtistChange={handleFilterArtist}
-				onTypeChange={handleFilterType}
-				onPriceSortChange={handleSortPrice}
-			/>
+			<div className="flex flex-wrap items-center justify-between gap-3">
+				<ArtworkFilters
+					onArtistChange={handleFilterArtist}
+					onTypeChange={handleFilterType}
+					onPriceSortChange={handleSortPrice}
+				/>
+				{isAdmin && <CreateArtworkDialog />}
+			</div>
 
 			{isLoading ? (
 				<div className="flex justify-center py-12">
@@ -45,7 +49,7 @@ export const ArtworksPage = () => {
 						<ArtworkCard
 							key={artwork.id}
 							artwork={artwork}
-							canDelete={canDelete}
+							canDelete={isAdmin}
 							isDeleting={isDeleting}
 							onDelete={deleteArtwork}
 						/>

@@ -5,8 +5,8 @@ import { Label } from "@/shared/components/ui/label";
 import { Switch } from "@/shared/components/ui/switch";
 import type { Artwork, UpdateArtworkDto } from "../../api/artworks.types";
 import { useArtworkForm } from "../../hooks/useArtworkForm";
-import { FormField } from "./FormField";
-import { TypeSelectField } from "./TypeSelectField";
+import { FormField } from "../FormField";
+import { TypeSelectField } from "../TypeSelectField";
 
 type ArtworkEditFormProps = {
 	artwork: Artwork;

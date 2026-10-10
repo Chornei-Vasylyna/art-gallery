@@ -10,7 +10,7 @@ const PAGE_SIZE = 4;
 export const useArtworks = () => {
 	const { user } = useAuthStore();
 	console.log(user);
-	const canDelete = useIsAdmin();
+	const isAdmin = useIsAdmin();
 
 	const [filters, setFilters] = useState<GetArtworksParams>({});
 	const [page, setPage] = useState(1);
@@ -59,7 +59,7 @@ export const useArtworks = () => {
 		error,
 		filters,
 		isDeleting,
-		canDelete,
+		isAdmin,
 		page: currentPage,
 		totalPages,
 		handlePageChange,

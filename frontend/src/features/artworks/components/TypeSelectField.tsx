@@ -6,8 +6,8 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "@/shared/components/ui/select";
-import { ArtworkType } from "../../api/artworks.types";
-import type { ArtworkFormValues } from "../../schemas/artworkForm.schema";
+import { ArtworkType } from "../api/artworks.types";
+import type { ArtworkFormValues } from "../schemas/artworkForm.schema";
 import { FormField } from "./FormField";
 
 const typeItems = Object.values(ArtworkType).map((type) => ({
@@ -17,7 +17,7 @@ const typeItems = Object.values(ArtworkType).map((type) => ({
 
 type TypeSelectFieldProps = {
 	control: Control<ArtworkFormValues>;
-	disabled: boolean;
+	disabled?: boolean;
 };
 
 export const TypeSelectField = ({

@@ -15,7 +15,7 @@ export const artworkFormSchema = z.object({
 	type: z.enum(ArtworkType),
 	price: z
 		.number({ error: "Price is required" })
-		.min(0, "Price can't be negative"),
+		.min(0.01, "Price must be more than 0"),
 	availability: z.boolean(),
 });
 
